@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+:root {
+  /* Dark navy palette */
+  --background: #050818;
+  --background-elevated: #0a0f2a;
+  --foreground: #f5f7ff;
+  --foreground-muted: #b4bce0;
+  --foreground-dim: #6c7299;
+
+  /* Accent — electric blue */
+  --accent: #4f8eff;
+  --accent-hover: #3a78f5;
+  --accent-glow: rgba(79, 142, 255, 0.35);
+
+  /* Borders & surfaces */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --surface: rgba(255, 255, 255, 0.04);
+  --surface-hover: rgba(255, 255, 255, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-dim: var(--foreground-dim);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  background: transparent;
+  color: var(--foreground);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  z-index: 0;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--background);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Glow utility */
+.glow-accent {
+  box-shadow: 0 0 40px var(--accent-glow);
+}
+
+/* CTA button base */
+.btn-primary {
+  background: var(--accent);
+  color: var(--background);
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 0 30px var(--accent-glow);
+  transform: translateY(-1px);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--foreground);
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  border: 1px solid var(--border-strong);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background: var(--surface);
+  border-color: var(--foreground-muted);
+}
+
+/* Input base */
+.input-base {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 16px;
+  width: 100%;
+  transition: all 0.2s ease;
+  outline: none;
+}
+.input-base:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.input-base::placeholder {
+  color: var(--foreground-dim);
+}
+
+/* Card */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+}
