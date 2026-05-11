@@ -247,6 +247,35 @@ const PAINS = [
   },
 ];
 
+// ── Animated Step Number ──────────────────────────────────────────────────────
+
+function PulsingStep({ num, stepIndex }: { num: string; stepIndex: number }) {
+  const delay = stepIndex * 1.5;
+  const cycle = 5.5;
+  return (
+    <motion.div
+      className="w-14 h-14 rounded-2xl flex items-center justify-center font-mono font-bold text-lg mb-6 relative z-10"
+      animate={{
+        boxShadow: [
+          "0 0 0px rgba(79,142,255,0)",
+          "0 0 18px rgba(79,142,255,0.8), 0 0 36px rgba(79,142,255,0.35)",
+          "0 0 0px rgba(79,142,255,0)",
+        ],
+        borderColor: [
+          "rgba(79,142,255,0.25)",
+          "rgba(79,142,255,1)",
+          "rgba(79,142,255,0.25)",
+        ],
+        color: ["#4f8eff", "#c0deff", "#4f8eff"],
+      }}
+      transition={{ duration: 0.9, delay, repeat: Infinity, repeatDelay: cycle - 0.9, ease: "easeInOut" }}
+      style={{ background: "#0a0f2a", border: "1px solid rgba(79,142,255,0.25)" }}
+    >
+      {num}
+    </motion.div>
+  );
+}
+
 // ── Steps ──────────────────────────────────────────────────────────────────────
 
 const STEPS = [
@@ -439,15 +468,29 @@ export default function LandingPage() {
             className="mb-14"
           >
             <div className="text-accent font-mono text-xs tracking-widest mb-4">CUM FUNCȚIONEAZĂ</div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">3 pași, 0 birocrație.</h2>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">3 pași.</h2>
           </motion.div>
 
           <div className="grid sm:grid-cols-3 gap-8 relative">
-            {/* Connector line */}
+            {/* Connector line statică */}
             <div
               className="hidden sm:block absolute"
-              style={{ top: 28, left: "18%", right: "18%", height: 1, background: "linear-gradient(to right, transparent, rgba(79,142,255,0.3), transparent)" }}
-            />
+              style={{ top: 28, left: "18%", right: "18%", height: 1, background: "rgba(79,142,255,0.12)", overflow: "hidden" }}
+            >
+              {/* Curentul care curge */}
+              <motion.div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: 80,
+                  height: "100%",
+                  background: "linear-gradient(to right, transparent, rgba(79,142,255,0.9), transparent)",
+                }}
+                animate={{ x: ["-80px", "calc(100% + 80px)"] }}
+                transition={{ duration: 3, delay: 0.4, repeat: Infinity, repeatDelay: 2.5, ease: "easeInOut" }}
+              />
+            </div>
 
             {STEPS.map((step, i) => (
               <motion.div
@@ -457,12 +500,7 @@ export default function LandingPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.15 }}
               >
-                <div
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center font-mono font-bold text-accent text-lg mb-6 relative z-10"
-                  style={{ background: "#0a0f2a", border: "1px solid rgba(79,142,255,0.3)" }}
-                >
-                  {step.num}
-                </div>
+                <PulsingStep num={step.num} stepIndex={i} />
                 <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
                 <p className="text-foreground-muted leading-relaxed">{step.desc}</p>
               </motion.div>
