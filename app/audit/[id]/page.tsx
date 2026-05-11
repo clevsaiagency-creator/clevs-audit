@@ -50,7 +50,7 @@ export default async function AuditPage({
 
   const categoryConfig = CATEGORIES[audit.categorie];
   const calendlyUrl =
-    process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/clevs-ai/discovery";
+    process.env.NEXT_PUBLIC_CALENDLY_URL || "https://cal.com/clevsai.agency/30min";
 
   // Status: dacă auditul nu e încă generat, arătăm un loading state
   const isPending = !audit.audit_content;
