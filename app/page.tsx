@@ -369,17 +369,15 @@ export default function LandingPage() {
             </h2>
           </motion.div>
 
-          {/* Scroll orizontal cu fade */}
-          <div className="relative">
-            {/* Fade dreapta */}
+          {/* Grid cu fade la bază */}
+          <div className="relative max-w-6xl mx-auto px-6">
             <div
-              className="absolute right-0 top-0 bottom-0 z-10 pointer-events-none"
-              style={{ width: 180, background: "linear-gradient(to left, #050818 0%, transparent 100%)" }}
-            />
-
-            <div
-              className="flex gap-4 overflow-x-auto pb-4"
-              style={{ paddingLeft: "max(24px, calc((100vw - 1152px) / 2 + 24px))", paddingRight: 120, scrollbarWidth: "none", msOverflowStyle: "none" }}
+              className="grid gap-4"
+              style={{
+                gridTemplateColumns: "repeat(3, 1fr)",
+                maxHeight: 400,
+                overflow: "hidden",
+              }}
             >
               {PAINS.map((pain, i) => (
                 <motion.div
@@ -387,9 +385,8 @@ export default function LandingPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.08 }}
-                  className="card hover:border-border-strong transition-all duration-300 flex-shrink-0"
-                  style={{ width: 260 }}
+                  transition={{ duration: 0.4, delay: i * 0.07 }}
+                  className="card hover:border-border-strong transition-all duration-300"
                 >
                   <div className="w-9 h-9 rounded-xl flex items-center justify-center text-accent mb-4" style={{ background: "rgba(79,142,255,0.1)", border: "1px solid rgba(79,142,255,0.2)" }}>
                     {pain.icon}
@@ -400,29 +397,36 @@ export default function LandingPage() {
                   <p className="text-foreground-muted text-sm leading-relaxed">{pain.desc}</p>
                 </motion.div>
               ))}
-
-              {/* Card final — CTA */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.5 }}
-                className="flex-shrink-0 flex flex-col items-center justify-center text-center rounded-2xl border border-dashed"
-                style={{ width: 220, borderColor: "rgba(79,142,255,0.25)", background: "rgba(79,142,255,0.04)" }}
-              >
-                <div className="text-4xl mb-4" style={{ color: "rgba(79,142,255,0.4)" }}>+</div>
-                <p className="text-sm text-foreground-dim mb-5 px-4 leading-relaxed">
-                  Mai sunt găuri. Află care se aplică la tine.
-                </p>
-                <Link
-                  href="/audit/start"
-                  className="text-xs font-semibold text-accent border border-accent/30 px-4 py-2 rounded-lg hover:bg-accent/10 transition"
-                >
-                  Verifică acum →
-                </Link>
-              </motion.div>
             </div>
+
+            {/* Fade gradient la bază */}
+            <div
+              className="absolute bottom-0 left-0 right-0 pointer-events-none"
+              style={{
+                height: 200,
+                background: "linear-gradient(to top, #050818 20%, rgba(5,8,24,0.6) 60%, transparent 100%)",
+              }}
+            />
           </div>
+
+          {/* CTA dedesubt */}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-center mt-6"
+          >
+            <Link
+              href="/audit/start"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-accent border px-6 py-3 rounded-xl hover:bg-accent/10 transition"
+              style={{ borderColor: "rgba(79,142,255,0.3)" }}
+            >
+              Află pe unde ți se scurg banii
+              <span>→</span>
+            </Link>
+            <p className="text-xs text-foreground-dim mt-3">2 minute · gratis · personalizat pe afacerea ta</p>
+          </motion.div>
         </section>
 
         {/* HOW IT WORKS */}
