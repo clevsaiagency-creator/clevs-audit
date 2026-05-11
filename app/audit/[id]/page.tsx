@@ -64,8 +64,9 @@ export default async function AuditPage({
       <main className="relative z-10 min-h-screen flex flex-col">
         {/* Header */}
         <header className="w-full max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-          <Link href="/">
-            <Image src="/logo.png" alt="Clevs AI" width={110} height={36} style={{ objectFit: "contain" }} />
+          <Link href="/" className="flex items-center gap-2 text-foreground">
+            <Image src="/logo.png" alt="Clevs AI" width={28} height={28} style={{ objectFit: "contain", mixBlendMode: "lighten" }} />
+            <span className="font-semibold text-lg">Clevs AI</span>
           </Link>
           <div className="text-xs sm:text-sm text-foreground-dim">
             Audit personalizat • {categoryConfig.label}

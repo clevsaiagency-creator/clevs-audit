@@ -308,8 +308,9 @@ export default function LandingPage() {
 
         {/* HEADER */}
         <header className="w-full max-w-6xl px-6 py-6 flex items-center justify-between">
-          <Link href="/" className="flex items-center">
-            <Image src="/logo.png" alt="Clevs AI" width={120} height={40} style={{ objectFit: "contain" }} />
+          <Link href="/" className="flex items-center gap-2">
+            <Image src="/logo.png" alt="Clevs AI" width={28} height={28} style={{ objectFit: "contain", mixBlendMode: "lighten" }} />
+            <span className="font-semibold text-lg">Clevs AI</span>
           </Link>
           <nav className="hidden sm:flex items-center gap-8 text-sm">
             <a href="#de-ce-conteaza" className="text-foreground-muted hover:text-foreground transition">De ce contează</a>
@@ -611,8 +612,8 @@ export default function LandingPage() {
         {/* FOOTER */}
         <footer className="w-full" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
           <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-foreground-dim">
-            <div className="flex items-center gap-3">
-              <Image src="/logo.png" alt="Clevs AI" width={80} height={28} style={{ objectFit: "contain" }} />
+            <div className="flex items-center gap-2">
+              <Image src="/logo.png" alt="Clevs AI" width={24} height={24} style={{ objectFit: "contain", mixBlendMode: "lighten" }} />
               <span>© {new Date().getFullYear()} Clevs AI Agency</span>
             </div>
             <div className="flex items-center gap-6">
