@@ -40,30 +40,30 @@ function IconLeads() {
   );
 }
 
-// ── Animated Counter ───────────────────────────────────────────────────────────
+// ── Glow Word (efect respirație) ──────────────────────────────────────────────
 
-function Counter({ end, prefix = "", suffix = "" }: { end: number; prefix?: string; suffix?: string }) {
-  const [count, setCount] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
-
-  useEffect(() => {
-    if (!inView) return;
-    const duration = 2000;
-    const startTime = performance.now();
-    const tick = (now: number) => {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * end));
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [inView, end]);
-
+function GlowWord({ children, delay = 0 }: { children: string; delay?: number }) {
   return (
-    <span ref={ref}>
-      {prefix}{count.toLocaleString("ro-RO")}{suffix}
-    </span>
+    <motion.span
+      className="font-semibold text-foreground"
+      animate={{
+        textShadow: [
+          "0 0 0px rgba(79,142,255,0)",
+          "0 0 12px rgba(79,142,255,0.9), 0 0 24px rgba(79,142,255,0.4)",
+          "0 0 0px rgba(79,142,255,0)",
+        ],
+        color: ["#f5f7ff", "#a8c8ff", "#f5f7ff"],
+      }}
+      transition={{
+        duration: 2.8,
+        delay,
+        repeat: Infinity,
+        repeatDelay: 1.5,
+        ease: "easeInOut",
+      }}
+    >
+      {children}
+    </motion.span>
   );
 }
 
@@ -293,11 +293,10 @@ export default function LandingPage() {
             </h1>
 
             <p className="text-lg text-foreground-muted leading-relaxed mb-8 max-w-lg">
-              Afacerile mici pierd în medie{" "}
-              <span className="text-foreground font-semibold">
-                <Counter end={2400} prefix="€" suffix="/lună" />
-              </span>{" "}
-              din cauze pe care nu le văd. Răspunde la 6 întrebări și află exact ce se întâmplă la tine.
+              6 întrebări. Afli unde pierzi <GlowWord delay={0}>bani</GlowWord> și{" "}
+              <GlowWord delay={0.7}>timp</GlowWord> — plus cât poți{" "}
+              <GlowWord delay={1.4}>recupera</GlowWord> și ce{" "}
+              <GlowWord delay={2.1}>soluții</GlowWord> AI ți se potrivesc.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 mb-10">
