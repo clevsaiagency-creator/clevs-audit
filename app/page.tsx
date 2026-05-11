@@ -598,8 +598,8 @@ export default function LandingPage() {
               <span>© {new Date().getFullYear()} Clevs AI Agency</span>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
-              <a href="mailto:clevs.ai.agency@gmail.com" className="hover:text-foreground transition">clevs.ai.agency@gmail.com</a>
-              <a href="tel:0722774524" className="hover:text-foreground transition">0722 774 524</a>
+              <a href="mailto:clevs.contact@gmail.com" className="hover:text-foreground transition">clevs.contact@gmail.com</a>
+              <a href="tel:0722774524" className="hover:text-foreground transition">0724 863 448</a>
             </div>
           </div>
         </footer>

@@ -145,10 +145,10 @@ export default function MultumirePage() {
               <span className="text-foreground-muted">Promotions</span>. Dacă tot nu apare,
               scrie-ne la{" "}
               <a
-                href="mailto:clevs.ai.agency@gmail.com"
+                href="mailto:clevs.contact@gmail.com"
                 className="text-accent hover:text-accent-hover transition"
               >
-                clevs.ai.agency@gmail.com
+                clevs.contact@gmail.com
               </a>
               .
             </motion.p>
