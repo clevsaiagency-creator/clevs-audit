@@ -167,7 +167,7 @@ function AuditMockCard() {
   );
 }
 
-// ── Mobile Hero Card (simplified) ─────────────────────────────────────────────
+// ── Mobile Hero Card ──────────────────────────────────────────────────────────
 
 function MobileAuditPreview() {
   return (
@@ -176,33 +176,61 @@ function MobileAuditPreview() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 0.4 }}
       className="relative mt-8 rounded-2xl overflow-hidden"
-      style={{ background: "#0a0f2a", border: "1px solid rgba(255,255,255,0.1)" }}
+      style={{ background: "#0a0f2a", border: "1px solid rgba(255,255,255,0.1)", boxShadow: "0 20px 60px rgba(0,0,0,0.5)" }}
     >
-      {/* Glow */}
       <div style={{ position: "absolute", inset: 0, background: "rgba(79,142,255,0.1)", filter: "blur(30px)", pointerEvents: "none" }} />
-      <div style={{ position: "relative", padding: "16px" }}>
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
-          <div style={{ fontSize: 11, color: "#6c7299", fontFamily: "monospace", letterSpacing: "0.08em" }}>EXEMPLU AUDIT GENERAT</div>
-          <span style={{ fontSize: 10, color: "#4ade80", display: "flex", alignItems: "center", gap: 4 }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
-            live
-          </span>
+
+      {/* Header */}
+      <div style={{ position: "relative", padding: "12px 16px", borderBottom: "1px solid rgba(255,255,255,0.07)", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div style={{ width: 20, height: 20, borderRadius: 5, background: "#4f8eff", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 700, fontSize: 10, color: "#050818" }}>C</div>
+          <span style={{ fontSize: 12, fontWeight: 600, color: "#f5f7ff" }}>Audit personalizat</span>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+        <span style={{ fontSize: 10, color: "#4ade80", display: "flex", alignItems: "center", gap: 4 }}>
+          <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
+          generat
+        </span>
+      </div>
+
+      <div style={{ position: "relative", padding: "14px 16px" }}>
+        {/* Pentru */}
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ fontSize: 9, color: "#6c7299", fontFamily: "monospace", marginBottom: 3, letterSpacing: "0.08em" }}>PENTRU</div>
+          <div style={{ fontSize: 13, fontWeight: 600, color: "#f5f7ff" }}>Cristina Beauty Studio</div>
+        </div>
+
+        {/* 01 / Problema ta */}
+        <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: 10, padding: "12px 14px", marginBottom: 10 }}>
+          <div style={{ fontSize: 9, color: "#4f8eff", fontFamily: "monospace", marginBottom: 6, letterSpacing: "0.08em" }}>01 / PROBLEMA TA</div>
+          <p style={{ fontSize: 12, color: "#b4bce0", lineHeight: 1.6, margin: 0 }}>
+            Cristina, am înțeles că pierzi clienți care sună și nu prind pe nimeni. Fiecare apel neridicat înseamnă o programare pierdută...
+          </p>
+        </div>
+
+        {/* Metrici */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 10 }}>
           <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: 10, padding: "10px 12px" }}>
             <div style={{ fontSize: 9, color: "#6c7299", marginBottom: 4 }}>⏰ Timp pierdut</div>
-            <div style={{ fontSize: 15, fontWeight: 700, color: "#f5f7ff" }}>~10h/săpt.</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "#f5f7ff" }}>~10h/săpt.</div>
           </div>
           <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: 10, padding: "10px 12px" }}>
             <div style={{ fontSize: 9, color: "#6c7299", marginBottom: 4 }}>💸 Cost lunar</div>
-            <div style={{ fontSize: 15, fontWeight: 700, color: "#4f8eff" }}>~2.100 RON</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: "#4f8eff" }}>~2.100 RON</div>
           </div>
         </div>
-        <div style={{ marginTop: 10, background: "rgba(255,255,255,0.04)", borderRadius: 10, padding: "10px 12px" }}>
-          <div style={{ fontSize: 9, color: "#4f8eff", fontFamily: "monospace", marginBottom: 6, letterSpacing: "0.07em" }}>03 / SOLUȚII PENTRU TINE</div>
-          <div style={{ filter: "blur(3px)" }}>
+
+        {/* Soluții blur + CTA */}
+        <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: 10, padding: "12px 14px", position: "relative", overflow: "hidden" }}>
+          <div style={{ fontSize: 9, color: "#4f8eff", fontFamily: "monospace", marginBottom: 8, letterSpacing: "0.07em" }}>03 / SOLUȚII PENTRU TINE</div>
+          <div style={{ filter: "blur(3px)", userSelect: "none" }}>
             <div style={{ height: 8, background: "rgba(255,255,255,0.08)", borderRadius: 4, width: "75%", marginBottom: 6 }} />
-            <div style={{ height: 8, background: "rgba(255,255,255,0.08)", borderRadius: 4, width: "90%" }} />
+            <div style={{ height: 8, background: "rgba(255,255,255,0.08)", borderRadius: 4, width: "90%", marginBottom: 6 }} />
+            <div style={{ height: 8, background: "rgba(255,255,255,0.08)", borderRadius: 4, width: "60%" }} />
+          </div>
+          <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Link href="/audit/start" style={{ background: "#4f8eff", color: "#050818", fontWeight: 600, fontSize: 11, padding: "7px 14px", borderRadius: 8, textDecoration: "none" }}>
+              Completează formularul →
+            </Link>
           </div>
         </div>
       </div>
@@ -366,7 +394,7 @@ export default function LandingPage() {
 
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
             {/* Responsive grid — inline style removed, folosim className + CSS */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pain-grid">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 pain-grid">
               {PAINS.map((pain, i) => (
                 <motion.div
                   key={i}
@@ -374,15 +402,16 @@ export default function LandingPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.07 }}
-                  className="card hover:border-border-strong transition-all duration-300"
+                  className="card pain-card hover:border-border-strong transition-all duration-300"
                 >
-                  <div className="w-9 h-9 rounded-xl flex items-center justify-center text-accent mb-4" style={{ background: "rgba(79,142,255,0.1)", border: "1px solid rgba(79,142,255,0.2)" }}>
+                  <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-accent mb-3 sm:mb-4" style={{ background: "rgba(79,142,255,0.1)", border: "1px solid rgba(79,142,255,0.2)" }}>
                     {pain.icon}
                   </div>
-                  <div className="text-2xl font-bold text-foreground mb-1">{pain.stat}</div>
-                  <div className="text-xs text-foreground-dim mb-4">{pain.statLabel}</div>
-                  <h3 className="text-base font-semibold mb-2">{pain.title}</h3>
-                  <p className="text-foreground-muted text-sm leading-relaxed">{pain.desc}</p>
+                  <div className="text-lg sm:text-2xl font-bold text-foreground mb-0.5 sm:mb-1">{pain.stat}</div>
+                  <div className="text-[10px] sm:text-xs text-foreground-dim mb-2 sm:mb-4 leading-tight">{pain.statLabel}</div>
+                  <h3 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2">{pain.title}</h3>
+                  <p className="text-foreground-muted text-xs sm:text-sm leading-relaxed hidden sm:block">{pain.desc}</p>
+                  <p className="text-foreground-muted text-[11px] leading-snug sm:hidden">{pain.desc.split(".")[0]}.</p>
                 </motion.div>
               ))}
             </div>

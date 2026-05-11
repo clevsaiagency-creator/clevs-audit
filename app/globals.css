@@ -152,12 +152,22 @@ body {
 
 /* Pain grid — responsive maxHeight */
 .pain-grid {
-  max-height: 600px;
+  max-height: 520px;
   overflow: hidden;
 }
 @media (min-width: 1024px) {
   .pain-grid {
     max-height: 400px;
+  }
+}
+
+/* Pain card — padding mai mic pe mobile */
+.pain-card {
+  padding: 14px;
+}
+@media (min-width: 640px) {
+  .pain-card {
+    padding: 24px;
   }
 }
 
