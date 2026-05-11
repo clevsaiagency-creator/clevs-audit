@@ -112,33 +112,6 @@ export default async function AuditPage({
             generată din răspunsurile tale.
           </p>
 
-          {/* Summary card rapid — vizibil și înainte să dai scroll */}
-          {!isPending && audit.audit_content && (
-            <div
-              className="grid grid-cols-2 gap-3 rounded-2xl p-4 sm:p-5 mb-2"
-              style={{
-                background: "rgba(255,255,255,0.03)",
-                border: "1px solid rgba(255,255,255,0.08)",
-              }}
-            >
-              <div>
-                <div className="text-xs text-foreground-dim mb-1 font-mono">⏰ TIMP PIERDUT</div>
-                <div className="text-base sm:text-lg font-bold text-foreground">
-                  {audit.audit_content.estimari.timp}
-                </div>
-              </div>
-              <div>
-                <div className="text-xs text-foreground-dim mb-1 font-mono">💸 COST LUNAR</div>
-                <div className="text-base sm:text-lg font-bold text-accent">
-                  {audit.audit_content.estimari.bani}
-                </div>
-              </div>
-              <div className="col-span-2 pt-3 flex items-center gap-2 text-xs text-green-400" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                Analiza completă · scroll pentru detalii
-              </div>
-            </div>
-          )}
         </section>
 
         {/* ── Content ─────────────────────────────────────────────────── */}

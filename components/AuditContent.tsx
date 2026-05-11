@@ -1,32 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import type { AuditContent } from "@/lib/supabase";
 
 const PHONE_WA = "40724863448";
 const PHONE_DISPLAY = "0724 863 448";
 const EMAIL = "clevs.contact@gmail.com";
-
-// ── Count-up hook ─────────────────────────────────────────────────────────────
-
-function useCountUp(target: number, duration = 1400, start = false) {
-  const [value, setValue] = useState(0);
-  useEffect(() => {
-    if (!start) return;
-    const startTime = performance.now();
-    const tick = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setValue(Math.round(eased * target));
-      if (progress < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }, [start, target, duration]);
-  return value;
-}
 
 // ── Animated Section Wrapper ──────────────────────────────────────────────────
 
@@ -63,62 +44,58 @@ function SectionLabel({ children }: { children: string }) {
   );
 }
 
-// ── Metric Card cu count-up ───────────────────────────────────────────────────
+// ── Impact Card ───────────────────────────────────────────────────────────────
 
-function MetricCard({
-  emoji,
+function ImpactCard({
+  icon,
   label,
   value,
-  color = "text-foreground",
+  accentColor,
+  glowColor,
+  borderColor,
   delay = 0,
 }: {
-  emoji: string;
+  icon: React.ReactNode;
   label: string;
   value: string;
-  color?: string;
+  accentColor: string;
+  glowColor: string;
+  borderColor: string;
   delay?: number;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-
-  const numericMatch = value.match(/\d[\d.,]*/);
-  const numericPart = numericMatch ? parseFloat(numericMatch[0].replace(",", ".")) : 0;
-  const prefix = numericMatch ? value.slice(0, numericMatch.index) : "";
-  const suffix = numericMatch
-    ? value.slice((numericMatch.index ?? 0) + numericMatch[0].length)
-    : value;
-
-  const isLargeNum = numericPart > 100;
-  const countedValue = useCountUp(numericPart, isLargeNum ? 1600 : 1200, inView);
-
-  const displayValue = numericPart > 0
-    ? `${prefix}${isLargeNum ? countedValue.toLocaleString("ro-RO") : countedValue}${suffix}`
-    : value;
-
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, scale: 0.92 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay, ease: [0.16, 1, 0.3, 1] }}
-      className="relative rounded-2xl p-6 overflow-hidden"
-      style={{
-        background: "rgba(255,255,255,0.04)",
-        border: "1px solid rgba(255,255,255,0.09)",
-      }}
+      transition={{ duration: 0.55, delay, ease: [0.16, 1, 0.3, 1] }}
+      className="relative rounded-2xl p-6 overflow-hidden flex flex-col gap-4"
+      style={{ background: "rgba(255,255,255,0.03)", border: `1px solid ${borderColor}` }}
     >
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "radial-gradient(ellipse at top left, rgba(79,142,255,0.07) 0%, transparent 65%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="text-2xl mb-3">{emoji}</div>
-      <div className="text-xs text-foreground-dim mb-2 font-mono tracking-wide">{label}</div>
-      <div className={`text-3xl sm:text-4xl font-bold leading-tight ${color}`}>{displayValue}</div>
+      {/* Glow radial */}
+      <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at top left, ${glowColor} 0%, transparent 65%)`, pointerEvents: "none" }} />
+
+      {/* Icon badge */}
+      <div style={{ position: "relative", display: "inline-flex", alignItems: "center", justifyContent: "center", width: 44, height: 44, borderRadius: 12, background: glowColor, border: `1px solid ${borderColor}`, color: accentColor }}>
+        {icon}
+      </div>
+
+      {/* Label */}
+      <div style={{ position: "relative" }}>
+        <div className="text-xs font-mono tracking-widest mb-2" style={{ color: accentColor }}>{label}</div>
+        <p className="text-foreground text-sm sm:text-base leading-relaxed">{value}</p>
+      </div>
+
+      {/* Bottom bar indicator */}
+      <div style={{ position: "relative", height: 3, borderRadius: 99, background: "rgba(255,255,255,0.06)", overflow: "hidden", marginTop: "auto" }}>
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: "75%" }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, delay: delay + 0.3, ease: "easeOut" }}
+          style={{ position: "absolute", inset: 0, height: "100%", background: accentColor, borderRadius: 99 }}
+        />
+      </div>
     </motion.div>
   );
 }
@@ -243,21 +220,34 @@ export default function AuditContent({
         {/* ── 02 / Estimările ──────────────────────────────────────────── */}
         <FadeIn delay={0.05}>
           <div>
-            <SectionLabel>02 / ESTIMĂRILE TALE</SectionLabel>
-            <h2 className="text-xl sm:text-2xl font-bold mb-6">Cât costă, în cifre</h2>
+            <SectionLabel>02 / IMPACTUL REAL</SectionLabel>
+            <h2 className="text-xl sm:text-2xl font-bold mb-6">Ce pierzi în fiecare lună</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
-              <MetricCard
-                emoji="⏰"
-                label="TIMP PIERDUT"
+              <ImpactCard
+                label="TIMP PIERDUT SĂPTĂMÂNAL"
                 value={content.estimari.timp}
+                accentColor="#f97316"
+                glowColor="rgba(249,115,22,0.12)"
+                borderColor="rgba(249,115,22,0.25)"
                 delay={0}
+                icon={
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                }
               />
-              <MetricCard
-                emoji="💸"
-                label="BANI PIERDUȚI LUNAR"
+              <ImpactCard
+                label="COST LUNAR ESTIMAT"
                 value={content.estimari.bani}
-                color="text-accent"
+                accentColor="#ef4444"
+                glowColor="rgba(239,68,68,0.1)"
+                borderColor="rgba(239,68,68,0.22)"
                 delay={0.1}
+                icon={
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                  </svg>
+                }
               />
             </div>
             <div
