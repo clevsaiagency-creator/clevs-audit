@@ -149,3 +149,22 @@ body {
   border-radius: 16px;
   padding: 24px;
 }
+
+/* Pain grid — responsive maxHeight */
+.pain-grid {
+  max-height: 600px;
+  overflow: hidden;
+}
+@media (min-width: 1024px) {
+  .pain-grid {
+    max-height: 400px;
+  }
+}
+
+/* Mobile btn full width */
+@media (max-width: 639px) {
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
