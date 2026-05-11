@@ -117,13 +117,12 @@ export default function GalaxyBackground({
     initStars();
     initNebulae();
 
-    let frame = 0;
-    const animate = () => {
-      // Background gradient (subtle)
+    const isMobile = window.innerWidth < 768;
+
+    const drawFrame = (animated: boolean) => {
       ctx.fillStyle = "#050818";
       ctx.fillRect(0, 0, width, height);
 
-      // Nebulae (soft glowing clouds)
       for (const n of nebulae) {
         const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.radius);
         grad.addColorStop(0, n.color);
@@ -132,11 +131,10 @@ export default function GalaxyBackground({
         ctx.fillRect(0, 0, width, height);
       }
 
-      // Stars
       for (const star of stars) {
-        star.twinklePhase += star.twinkleSpeed;
+        if (animated) star.twinklePhase += star.twinkleSpeed;
         const twinkle = (Math.sin(star.twinklePhase) + 1) / 2;
-        const alpha = 0.4 + twinkle * 0.6;
+        const alpha = animated ? 0.4 + twinkle * 0.6 : 0.7;
 
         ctx.globalAlpha = alpha * star.z;
         ctx.fillStyle = star.color;
@@ -144,7 +142,6 @@ export default function GalaxyBackground({
         ctx.arc(star.x, star.y, star.size * star.z, 0, Math.PI * 2);
         ctx.fill();
 
-        // Glow on bigger stars
         if (star.size > 1) {
           ctx.globalAlpha = alpha * star.z * 0.3;
           ctx.beginPath();
@@ -153,8 +150,21 @@ export default function GalaxyBackground({
         }
       }
       ctx.globalAlpha = 1;
+    };
 
-      // Shooting stars
+    // Mobile: draw once, no animation loop — eliminates scroll glitch completely
+    if (isMobile) {
+      drawFrame(false);
+      const handleResize = () => { setupSize(); initStars(); initNebulae(); drawFrame(false); };
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+    }
+
+    // Desktop: full animated loop with shooting stars
+    let frame = 0;
+    const animate = () => {
+      drawFrame(true);
+
       if (showShootingStars && frame % 240 === 0 && Math.random() > 0.4) {
         spawnShootingStar();
       }
@@ -167,14 +177,8 @@ export default function GalaxyBackground({
         const lifeRatio = s.life / s.maxLife;
         const alpha = lifeRatio < 0.3 ? lifeRatio / 0.3 : 1 - (lifeRatio - 0.3) / 0.7;
 
-        // Draw trail
         const trailLength = 80;
-        const grad = ctx.createLinearGradient(
-          s.x,
-          s.y,
-          s.x - s.vx * trailLength * 0.1,
-          s.y - s.vy * trailLength * 0.1
-        );
+        const grad = ctx.createLinearGradient(s.x, s.y, s.x - s.vx * trailLength * 0.1, s.y - s.vy * trailLength * 0.1);
         grad.addColorStop(0, `rgba(255, 255, 255, ${alpha})`);
         grad.addColorStop(1, "rgba(255, 255, 255, 0)");
 
@@ -194,35 +198,10 @@ export default function GalaxyBackground({
 
     animate();
 
-    // Pause animation during scroll to prevent mobile compositor glitch
-    let scrollTimeout: ReturnType<typeof setTimeout>;
-    let isPaused = false;
-    const handleScroll = () => {
-      if (!isPaused) {
-        cancelAnimationFrame(animationRef.current);
-        isPaused = true;
-      }
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        isPaused = false;
-        animationRef.current = requestAnimationFrame(animate);
-      }, 120);
-    };
-
-    const handleResize = () => {
-      setupSize();
-      initStars();
-      initNebulae();
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("touchmove", handleScroll, { passive: true });
+    const handleResize = () => { setupSize(); initStars(); initNebulae(); };
     window.addEventListener("resize", handleResize);
     return () => {
       cancelAnimationFrame(animationRef.current);
-      clearTimeout(scrollTimeout);
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("touchmove", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
   }, [density, showShootingStars]);
