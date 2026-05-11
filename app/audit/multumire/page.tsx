@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
 import GalaxyBackground from "@/components/GalaxyBackground";
@@ -38,9 +39,13 @@ export default function MultumirePage() {
       <main className="relative z-10 min-h-screen flex flex-col items-center">
         <header className="w-full max-w-6xl px-6 py-6 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 text-foreground">
-            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center font-bold text-background">
-              C
-            </div>
+            <Image
+              src="/logo.png"
+              alt="Clevs AI"
+              width={28}
+              height={28}
+              style={{ objectFit: "contain", mixBlendMode: "lighten" }}
+            />
             <span className="font-semibold text-lg">Clevs AI</span>
           </Link>
         </header>
