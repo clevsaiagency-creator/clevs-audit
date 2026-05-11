@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
           angajati: data.angajati,
           canal_contact: data.canalContact,
           pain_points: data.painPoints,
-          audit_url: `${process.env.NEXT_PUBLIC_APP_URL || ""}/audit/${leadId}`,
+          audit_url: `${process.env.NEXT_PUBLIC_APP_URL || "https://clevs-audit.vercel.app"}/audit/${leadId}`,
         }),
       });
 
