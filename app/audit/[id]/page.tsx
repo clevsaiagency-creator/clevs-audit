@@ -79,12 +79,10 @@ export default async function AuditPage({
             href="https://clevs-ai.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs sm:text-sm text-foreground-dim hover:text-foreground transition flex items-center gap-1.5"
+            className="text-sm font-semibold text-accent hover:text-accent-hover transition flex items-center gap-1"
           >
-            <span>{categoryConfig.emoji}</span>
-            <span>{categoryConfig.label}</span>
-            <span className="text-foreground-dim">·</span>
-            <span className="text-accent">clevs-ai.com ↗</span>
+            clevs-ai.com
+            <span className="text-xs opacity-70">↗</span>
           </a>
         </header>
 

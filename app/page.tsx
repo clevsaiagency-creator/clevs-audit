@@ -351,6 +351,19 @@ export default function LandingPage() {
               <span>✓ Răspuns în 5 min</span>
             </div>
 
+            <a
+              href="https://clevs-ai.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-foreground-dim hover:text-foreground transition px-4 py-2 rounded-lg"
+              style={{ border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)" }}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
+              clevs-ai.com
+            </a>
+
             {/* Mobile: audit preview card sub butoane */}
             <div className="lg:hidden">
               <MobileAuditPreview />
