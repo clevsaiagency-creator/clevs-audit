@@ -444,8 +444,24 @@ export default function AuditContent({
                 <div className="text-xs text-foreground-dim">Clevs AI Agency</div>
               </div>
             </div>
+            {/* Website buton */}
+            <a
+              href="https://clevs-ai.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all duration-200 hover:bg-white/5 mb-1"
+              style={{ border: "1px solid rgba(255,255,255,0.1)", color: "#b4bce0" }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
+              clevs-ai.com
+              <span className="text-foreground-dim text-xs">↗</span>
+            </a>
+
             <div
-              className="pt-5 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm"
+              className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-sm"
               style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
             >
               <a

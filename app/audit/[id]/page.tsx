@@ -75,10 +75,17 @@ export default async function AuditPage({
             />
             <span className="font-semibold text-lg">Clevs AI</span>
           </Link>
-          <div className="text-xs sm:text-sm text-foreground-dim flex items-center gap-2">
+          <a
+            href="https://clevs-ai.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs sm:text-sm text-foreground-dim hover:text-foreground transition flex items-center gap-1.5"
+          >
             <span>{categoryConfig.emoji}</span>
             <span>{categoryConfig.label}</span>
-          </div>
+            <span className="text-foreground-dim">·</span>
+            <span className="text-accent">clevs-ai.com ↗</span>
+          </a>
         </header>
 
         {/* ── Hero ────────────────────────────────────────────────────── */}
@@ -160,6 +167,9 @@ export default async function AuditPage({
               <span>© {new Date().getFullYear()} Clevs AI Agency</span>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
+              <a href="https://clevs-ai.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition">
+                clevs-ai.com
+              </a>
               <a href="mailto:clevs.contact@gmail.com" className="hover:text-foreground transition">
                 clevs.contact@gmail.com
               </a>

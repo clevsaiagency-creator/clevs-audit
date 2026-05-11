@@ -297,6 +297,7 @@ export default function LandingPage() {
           <nav className="hidden sm:flex items-center gap-8 text-sm">
             <a href="#de-ce-conteaza" className="text-foreground-muted hover:text-foreground transition">De ce contează</a>
             <a href="#cum-functioneaza" className="text-foreground-muted hover:text-foreground transition">Cum funcționează</a>
+            <a href="https://clevs-ai.com" target="_blank" rel="noopener noreferrer" className="text-foreground-muted hover:text-foreground transition">Despre noi</a>
             <Link href="/audit/start" className="text-accent hover:text-accent-hover font-medium transition">Audit gratuit →</Link>
           </nav>
           {/* Mobile CTA */}
@@ -598,8 +599,9 @@ export default function LandingPage() {
               <span>© {new Date().getFullYear()} Clevs AI Agency</span>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
+              <a href="https://clevs-ai.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition">clevs-ai.com</a>
               <a href="mailto:clevs.contact@gmail.com" className="hover:text-foreground transition">clevs.contact@gmail.com</a>
-              <a href="tel:0722774524" className="hover:text-foreground transition">0724 863 448</a>
+              <a href="tel:0724863448" className="hover:text-foreground transition">0724 863 448</a>
             </div>
           </div>
         </footer>
