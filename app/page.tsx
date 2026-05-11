@@ -206,23 +206,44 @@ const PAINS = [
   {
     icon: <IconPhone />,
     title: "Apeluri neridicate",
-    desc: "Fiecare apel neridicat = un client mers direct la concurență. Și nu se mai întorc să sune a doua oară.",
+    desc: "Fiecare apel neridicat = un client dus direct la concurență. Nu se mai întorc.",
     stat: "~30%",
     statLabel: "din apeluri rămân fără răspuns",
   },
   {
     icon: <IconClock />,
-    title: "Timp irosit zilnic",
-    desc: "Răspunzi la aceleași întrebări de 20 de ori pe zi. Ore întregi mâncate de sarcini repetitive.",
+    title: "Întrebări repetitive",
+    desc: "\"Cât costă?\", \"Aveți loc joi?\", \"Care e programul?\" — de 20 de ori pe zi, manual.",
     stat: "8–12h",
-    statLabel: "pierdute pe săptămână în medie",
+    statLabel: "pierdute pe săptămână",
   },
   {
     icon: <IconLeads />,
-    title: "Lead-uri uitate",
-    desc: "Oameni care au întrebat de preț și au dispărut. Nu i-a mai contactat nimeni. Bani lăsați pe masă.",
+    title: "No-show la programări",
+    desc: "20% din programări nu se prezintă. Slot gol, bani pierduți, nimeni n-a dat un reminder.",
+    stat: "1 din 5",
+    statLabel: "programări = loc gol",
+  },
+  {
+    icon: <IconLeads />,
+    title: "Lead-uri fără follow-up",
+    desc: "Au întrebat de preț, au dispărut. Nimeni nu i-a mai sunat. Banii ăia au mers la altcineva.",
     stat: "60%",
-    statLabel: "din lead-uri nu primesc follow-up",
+    statLabel: "din lead-uri mor fără răspuns",
+  },
+  {
+    icon: <IconPhone />,
+    title: "Coș abandonat",
+    desc: "Clienți care au ajuns pe site, au ales, și au plecat fără să cumpere. Fără niciun mesaj după.",
+    stat: "70%",
+    statLabel: "din vizitatori pleacă fără să cumpere",
+  },
+  {
+    icon: <IconClock />,
+    title: "Clienți inactivi",
+    desc: "Clienți care au mai cumpărat dar au dispărut. Nu i-a contactat nimeni să-i aducă înapoi.",
+    stat: "3×",
+    statLabel: "mai ieftin să reactivezi vs să aduci nou",
   },
 ];
 
@@ -333,40 +354,74 @@ export default function LandingPage() {
         </div>
 
         {/* PAIN SECTION */}
-        <section id="de-ce-conteaza" className="w-full max-w-6xl px-6 py-24">
+        <section id="de-ce-conteaza" className="w-full py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-14"
+            className="max-w-6xl mx-auto px-6 mb-12"
           >
             <div className="text-accent font-mono text-xs tracking-widest mb-4">DE CE CONTEAZĂ</div>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight max-w-2xl">
-              Banii ies pe uși
-              <br />pe care nu le vezi.
+              Găurile pe unde
+              <br />se scurg banii.
             </h2>
           </motion.div>
 
-          <div className="grid sm:grid-cols-3 gap-5">
-            {PAINS.map((pain, i) => (
+          {/* Scroll orizontal cu fade */}
+          <div className="relative">
+            {/* Fade dreapta */}
+            <div
+              className="absolute right-0 top-0 bottom-0 z-10 pointer-events-none"
+              style={{ width: 180, background: "linear-gradient(to left, #050818 0%, transparent 100%)" }}
+            />
+
+            <div
+              className="flex gap-4 overflow-x-auto pb-4"
+              style={{ paddingLeft: "max(24px, calc((100vw - 1152px) / 2 + 24px))", paddingRight: 120, scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {PAINS.map((pain, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
+                  className="card hover:border-border-strong transition-all duration-300 flex-shrink-0"
+                  style={{ width: 260 }}
+                >
+                  <div className="w-9 h-9 rounded-xl flex items-center justify-center text-accent mb-4" style={{ background: "rgba(79,142,255,0.1)", border: "1px solid rgba(79,142,255,0.2)" }}>
+                    {pain.icon}
+                  </div>
+                  <div className="text-2xl font-bold text-foreground mb-1">{pain.stat}</div>
+                  <div className="text-xs text-foreground-dim mb-4">{pain.statLabel}</div>
+                  <h3 className="text-base font-semibold mb-2">{pain.title}</h3>
+                  <p className="text-foreground-muted text-sm leading-relaxed">{pain.desc}</p>
+                </motion.div>
+              ))}
+
+              {/* Card final — CTA */}
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="card hover:border-border-strong transition-all duration-300 group"
+                transition={{ duration: 0.4, delay: 0.5 }}
+                className="flex-shrink-0 flex flex-col items-center justify-center text-center rounded-2xl border border-dashed"
+                style={{ width: 220, borderColor: "rgba(79,142,255,0.25)", background: "rgba(79,142,255,0.04)" }}
               >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center text-accent mb-5 transition" style={{ background: "rgba(79,142,255,0.1)", border: "1px solid rgba(79,142,255,0.2)" }}>
-                  {pain.icon}
-                </div>
-                <div className="text-3xl font-bold text-foreground mb-1">{pain.stat}</div>
-                <div className="text-xs text-foreground-dim mb-5">{pain.statLabel}</div>
-                <h3 className="text-lg font-semibold mb-2">{pain.title}</h3>
-                <p className="text-foreground-muted text-sm leading-relaxed">{pain.desc}</p>
+                <div className="text-4xl mb-4" style={{ color: "rgba(79,142,255,0.4)" }}>+</div>
+                <p className="text-sm text-foreground-dim mb-5 px-4 leading-relaxed">
+                  Mai sunt găuri. Află care se aplică la tine.
+                </p>
+                <Link
+                  href="/audit/start"
+                  className="text-xs font-semibold text-accent border border-accent/30 px-4 py-2 rounded-lg hover:bg-accent/10 transition"
+                >
+                  Verifică acum →
+                </Link>
               </motion.div>
-            ))}
+            </div>
           </div>
         </section>
 
