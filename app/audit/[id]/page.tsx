@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { getServiceClient, type AuditContent } from "@/lib/supabase";
 import { CATEGORIES, type CategoryId } from "@/lib/categories";
 import GalaxyBackground from "@/components/GalaxyBackground";
@@ -63,11 +64,8 @@ export default async function AuditPage({
       <main className="relative z-10 min-h-screen flex flex-col">
         {/* Header */}
         <header className="w-full max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-foreground">
-            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center font-bold text-background">
-              C
-            </div>
-            <span className="font-semibold text-lg">Clevs AI</span>
+          <Link href="/">
+            <Image src="/logo.png" alt="Clevs AI" width={110} height={36} style={{ objectFit: "contain" }} />
           </Link>
           <div className="text-xs sm:text-sm text-foreground-dim">
             Audit personalizat • {categoryConfig.label}

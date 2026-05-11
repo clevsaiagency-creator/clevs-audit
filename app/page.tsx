@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import GalaxyBackground from "@/components/GalaxyBackground";
@@ -307,9 +308,8 @@ export default function LandingPage() {
 
         {/* HEADER */}
         <header className="w-full max-w-6xl px-6 py-6 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center font-bold text-background text-sm">C</div>
-            <span className="font-semibold text-lg">Clevs AI</span>
+          <Link href="/" className="flex items-center">
+            <Image src="/logo.png" alt="Clevs AI" width={120} height={40} style={{ objectFit: "contain" }} />
           </Link>
           <nav className="hidden sm:flex items-center gap-8 text-sm">
             <a href="#de-ce-conteaza" className="text-foreground-muted hover:text-foreground transition">De ce contează</a>
@@ -611,8 +611,8 @@ export default function LandingPage() {
         {/* FOOTER */}
         <footer className="w-full" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
           <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-foreground-dim">
-            <div className="flex items-center gap-2">
-              <div className="w-6 h-6 rounded-md bg-accent flex items-center justify-center text-xs font-bold text-background">C</div>
+            <div className="flex items-center gap-3">
+              <Image src="/logo.png" alt="Clevs AI" width={80} height={28} style={{ objectFit: "contain" }} />
               <span>© {new Date().getFullYear()} Clevs AI Agency</span>
             </div>
             <div className="flex items-center gap-6">
