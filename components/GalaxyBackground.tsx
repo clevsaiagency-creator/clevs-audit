@@ -194,15 +194,35 @@ export default function GalaxyBackground({
 
     animate();
 
+    // Pause animation during scroll to prevent mobile compositor glitch
+    let scrollTimeout: ReturnType<typeof setTimeout>;
+    let isPaused = false;
+    const handleScroll = () => {
+      if (!isPaused) {
+        cancelAnimationFrame(animationRef.current);
+        isPaused = true;
+      }
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isPaused = false;
+        animationRef.current = requestAnimationFrame(animate);
+      }, 120);
+    };
+
     const handleResize = () => {
       setupSize();
       initStars();
       initNebulae();
     };
 
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("touchmove", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize);
     return () => {
       cancelAnimationFrame(animationRef.current);
+      clearTimeout(scrollTimeout);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("touchmove", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
   }, [density, showShootingStars]);

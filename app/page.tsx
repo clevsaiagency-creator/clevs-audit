@@ -417,7 +417,7 @@ export default function LandingPage() {
             </div>
 
             {/* Fade gradient */}
-            <div className="absolute bottom-0 left-0 right-0 pointer-events-none" style={{ height: 180, background: "linear-gradient(to top, #050818 20%, rgba(5,8,24,0.6) 60%, transparent 100%)" }} />
+            <div className="pain-fade absolute bottom-0 left-0 right-0 pointer-events-none" style={{ background: "linear-gradient(to top, #050818 30%, rgba(5,8,24,0.7) 65%, transparent 100%)" }} />
           </div>
 
           <motion.div
@@ -425,15 +425,14 @@ export default function LandingPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="text-center mt-6 px-4"
+            className="text-center mt-4 sm:mt-6 px-4"
           >
             <Link
               href="/audit/start"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-accent border px-6 py-3 rounded-xl hover:bg-accent/10 transition"
-              style={{ borderColor: "rgba(79,142,255,0.3)" }}
+              className="btn-primary inline-flex items-center gap-2 text-sm sm:text-base group"
             >
               Află pe unde ți se scurg banii
-              <span>→</span>
+              <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
             <p className="text-xs text-foreground-dim mt-3">2 minute · gratis · personalizat pe afacerea ta</p>
           </motion.div>
