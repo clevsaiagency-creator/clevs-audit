@@ -306,7 +306,7 @@ export default function LandingPage() {
             </div>
 
             <h1 className="text-5xl sm:text-6xl lg:text-[4.5rem] font-bold tracking-tight leading-[1.04] mb-6">
-              Cât pierde
+              Unde pierde
               <br />
               <span className="bg-gradient-to-r from-accent via-blue-300 to-purple-400 bg-clip-text text-transparent">
                 afacerea ta?
