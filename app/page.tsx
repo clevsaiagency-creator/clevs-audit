@@ -289,9 +289,8 @@ export default function LandingPage() {
 
         {/* HEADER */}
         <header className="w-full max-w-6xl px-4 sm:px-6 py-4 sm:py-6 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
-            <Image src="/logo.png" alt="Clevs AI" width={28} height={28} style={{ objectFit: "contain", mixBlendMode: "lighten" }} />
-            <span className="font-semibold text-lg">Clevs AI</span>
+          <Link href="/" className="flex items-center">
+            <Image src="/logo.png" alt="Clevs AI" width={140} height={40} style={{ objectFit: "contain", mixBlendMode: "lighten" }} />
           </Link>
           {/* Desktop nav */}
           <nav className="hidden sm:flex items-center gap-8 text-sm">
@@ -608,8 +607,8 @@ export default function LandingPage() {
         <footer className="w-full" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-foreground-dim">
             <div className="flex items-center gap-2">
-              <Image src="/logo.png" alt="Clevs AI" width={24} height={24} style={{ objectFit: "contain", mixBlendMode: "lighten" }} />
-              <span>© {new Date().getFullYear()} Clevs AI Agency</span>
+              <Image src="/logo.png" alt="Clevs AI" width={90} height={26} style={{ objectFit: "contain", mixBlendMode: "lighten" }} />
+              <span>© {new Date().getFullYear()}</span>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
               <a href="https://clevs-ai.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition">clevs-ai.com</a>

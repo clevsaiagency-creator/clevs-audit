@@ -38,15 +38,14 @@ export default function MultumirePage() {
 
       <main className="relative z-10 min-h-screen flex flex-col items-center">
         <header className="w-full max-w-6xl px-6 py-6 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-foreground">
+          <Link href="/" className="flex items-center">
             <Image
               src="/logo.png"
               alt="Clevs AI"
-              width={28}
-              height={28}
+              width={130}
+              height={37}
               style={{ objectFit: "contain", mixBlendMode: "lighten" }}
             />
-            <span className="font-semibold text-lg">Clevs AI</span>
           </Link>
         </header>
 

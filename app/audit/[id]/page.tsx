@@ -65,15 +65,14 @@ export default async function AuditPage({
 
         {/* ── Header ──────────────────────────────────────────────────── */}
         <header className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-5 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-foreground">
+          <Link href="/" className="flex items-center">
             <Image
               src="/logo.png"
               alt="Clevs AI"
-              width={28}
-              height={28}
+              width={130}
+              height={37}
               style={{ objectFit: "contain", mixBlendMode: "lighten" }}
             />
-            <span className="font-semibold text-lg">Clevs AI</span>
           </Link>
           <a
             href="https://clevs-ai.com"
@@ -131,11 +130,11 @@ export default async function AuditPage({
               <Image
                 src="/logo.png"
                 alt="Clevs AI"
-                width={22}
-                height={22}
+                width={90}
+                height={26}
                 style={{ objectFit: "contain", mixBlendMode: "lighten" }}
               />
-              <span>© {new Date().getFullYear()} Clevs AI Agency</span>
+              <span>© {new Date().getFullYear()}</span>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
               <a href="https://clevs-ai.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition">
