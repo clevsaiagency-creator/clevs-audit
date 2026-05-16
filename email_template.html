@@ -3,62 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
 <title>Auditul tău e gata</title>
 </head>
-<body style="margin:0;padding:0;background:#f4f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;">
+<body style="margin:0;padding:0;background:#f4f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;color-scheme:light;">
   <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="background:#f4f5f9;">
     <tr>
       <td align="center" style="padding:40px 16px;">
-
-        <!-- Card principal -->
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="600" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 6px 24px rgba(15,23,42,0.06);">
-
-          <!-- Header dark -->
           <tr>
             <td style="background:linear-gradient(135deg,#050818 0%,#0a0f2a 60%,#1a1f4a 100%);padding:36px 32px;text-align:center;">
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
                 <tr>
                   <td style="padding-right:10px;vertical-align:middle;">
-                    <img src="https://clevs-audit.vercel.app/logo.png" alt="Clevs AI" width="32" height="32" style="display:block;border-radius:6px;" />
+                    <img src="https://clevs-ai.com/logo.png" alt="Clevs AI" width="32" height="32" style="display:block;border-radius:6px;" />
                   </td>
                   <td style="vertical-align:middle;">
                     <span style="color:#ffffff;font-weight:600;font-size:18px;letter-spacing:-0.01em;">Clevs AI Agency</span>
                   </td>
                 </tr>
               </table>
-              <div style="margin-top:24px;color:#b4bce0;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;">
-                ✦ Audit personalizat
-              </div>
+              <div style="margin-top:24px;color:#b4bce0;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;">✦ Audit personalizat</div>
               <h1 style="margin:8px 0 0 0;color:#ffffff;font-size:28px;line-height:1.25;font-weight:700;letter-spacing:-0.02em;">
-                Salut, {{prenume}}.<br>Auditul pentru <span style="color:#4f8eff;">{{nume_business}}</span> e gata.
+                Salut, {{1.prenume}}.<br>Auditul pentru <span style="color:#4f8eff;">{{1.nume_business}}</span> e gata.
               </h1>
             </td>
           </tr>
-
-          <!-- Body -->
           <tr>
             <td style="padding:36px 32px 8px 32px;color:#1f2937;font-size:16px;line-height:1.65;">
-              <p style="margin:0 0 16px 0;">
-                Mulțumesc că ai răspuns la întrebări — am pregătit o analiză personalizată
-                pe situația ta concretă, cu estimări orientative și soluții care s-au dovedit eficiente
-                pentru afaceri similare.
-              </p>
-              <p style="margin:0 0 24px 0;color:#475569;">
-                Durează 2-3 minute să o citești. E a ta, gratis, fără obligații.
-              </p>
-
-              <!-- CTA Button principal -->
+              <p style="margin:0 0 16px 0;">Mulțumesc că ai răspuns la întrebări — am pregătit o analiză personalizată pe situația ta concretă, cu estimări orientative și soluții care s-au dovedit eficiente pentru afaceri similare.</p>
+              <p style="margin:0 0 24px 0;color:#475569;">Durează 2-3 minute să o citești. E a ta, gratis, fără obligații.</p>
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin:8px auto 16px auto;">
                 <tr>
                   <td align="center" bgcolor="#4f8eff" style="border-radius:10px;">
-                    <a href="{{audit_url}}" target="_blank" style="display:inline-block;padding:16px 36px;font-size:16px;font-weight:600;color:#050818;text-decoration:none;border-radius:10px;letter-spacing:-0.01em;">
+                    <a href="{{1.audit_url}}" target="_blank" style="display:inline-block;padding:16px 36px;font-size:16px;font-weight:600;color:#050818;text-decoration:none;border-radius:10px;letter-spacing:-0.01em;">
                       Vezi auditul tău →
                     </a>
                   </td>
                 </tr>
               </table>
-
-              <!-- WhatsApp button secundar -->
               <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="margin:0 auto 24px auto;">
                 <tr>
                   <td align="center" style="border-radius:10px;border:1px solid #25d366;">
@@ -68,47 +52,22 @@
                   </td>
                 </tr>
               </table>
-
-              <p style="margin:0 0 0 0;color:#64748b;font-size:13px;text-align:center;">
-                Sau copiază link-ul: <a href="{{audit_url}}" style="color:#4f8eff;word-break:break-all;">{{audit_url}}</a>
-              </p>
+              <p style="margin:0;color:#64748b;font-size:13px;text-align:center;">Sau copiază link-ul: <a href="{{1.audit_url}}" style="color:#4f8eff;word-break:break-all;">{{1.audit_url}}</a></p>
             </td>
           </tr>
-
-          <!-- Ce găsești înăuntru -->
           <tr>
             <td style="padding:24px 32px 8px 32px;">
               <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:20px 24px;">
-                <div style="color:#64748b;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;">
-                  Ce găsești înăuntru
-                </div>
+                <div style="color:#64748b;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;">Ce găsești înăuntru</div>
                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                  <tr>
-                    <td style="padding:6px 0;color:#1f2937;font-size:14px;">
-                      ✓ Problema ta — pe limba ta
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding:6px 0;color:#1f2937;font-size:14px;">
-                      ✓ Estimări de timp și bani pierduți lunar
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding:6px 0;color:#1f2937;font-size:14px;">
-                      ✓ 3 soluții concrete adaptate pe nevoia ta
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="padding:6px 0;color:#1f2937;font-size:14px;">
-                      ✓ O poveste reală + plan de acțiune
-                    </td>
-                  </tr>
+                  <tr><td style="padding:6px 0;color:#1f2937;font-size:14px;">✓ Problema ta — pe limba ta</td></tr>
+                  <tr><td style="padding:6px 0;color:#1f2937;font-size:14px;">✓ Estimări de timp și bani pierduți lunar</td></tr>
+                  <tr><td style="padding:6px 0;color:#1f2937;font-size:14px;">✓ 3 soluții concrete adaptate pe nevoia ta</td></tr>
+                  <tr><td style="padding:6px 0;color:#1f2937;font-size:14px;">✓ O poveste reală + plan de acțiune</td></tr>
                 </table>
               </div>
             </td>
           </tr>
-
-          <!-- Semnătură -->
           <tr>
             <td style="padding:32px 32px 16px 32px;color:#475569;font-size:15px;line-height:1.6;">
               <p style="margin:0 0 8px 0;">Cu drag,</p>
@@ -116,8 +75,6 @@
               <p style="margin:0;color:#64748b;font-size:13px;">Clevs AI Agency</p>
             </td>
           </tr>
-
-          <!-- Footer -->
           <tr>
             <td style="padding:24px 32px;border-top:1px solid #e2e8f0;background:#f8fafc;color:#94a3b8;font-size:12px;text-align:center;">
               <p style="margin:0 0 8px 0;">
@@ -130,9 +87,7 @@
               <p style="margin:0;">© Clevs AI Agency. Auditul tău rămâne disponibil la link-ul de mai sus.</p>
             </td>
           </tr>
-
         </table>
-
       </td>
     </tr>
   </table>
